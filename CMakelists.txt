@@ -4,7 +4,10 @@ project(imcmake)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# imgui headers
+# glfw
+add_subdirectory(dependencies/glfw)
+
+# imgui
 add_library(imgui STATIC
     dependencies/imgui/imconfig.h
     dependencies/imgui/imgui.cpp
@@ -23,15 +26,9 @@ add_library(imgui STATIC
     dependencies/imgui/imstb_textedit.h
     dependencies/imgui/imstb_truetype.h
 )
-
-target_include_directories(imgui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/GLFW/include)
-
-# glfw library
-add_library(glfw STATIC IMPORTED)
-set_target_properties(glfw PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/GLFW/lib-vc2022/glfw3.lib)
-target_include_directories(glfw INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/GLFW/include)
+target_link_libraries(imgui PUBLIC glfw)
 
 # imcmake
 add_executable(imcmake main.cpp)
 target_include_directories(imcmake PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/dependencies)
-target_link_libraries(imcmake PRIVATE opengl32 imgui glfw)
+target_link_libraries(imcmake PRIVATE opengl32 imgui)
