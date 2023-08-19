@@ -9,7 +9,7 @@ CMake project for ImGui
 
 To build the porject, follow these:
 
-1. Clone this repo
+1. Clone this repo recursively, for example `git clone --recursive https://github.com/MoleSchizo/imcmake`
 2. Create a `build` directory inside the repository and navigate to it
 3. Run `cmake ..` to generate the build files, for example `cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ../`.
 4. Run `make` to build it 
