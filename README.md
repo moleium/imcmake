@@ -15,6 +15,3 @@ To build the porject, follow these:
 4. Run `make` to build it 
 
 After building the project you should have an executable (or a solution, etc..) in the current directory
-
-## License 
-This project is licensed under the [MIT](LICENSE) License.
