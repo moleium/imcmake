@@ -4,31 +4,19 @@ project(imcmake)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# glfw
 add_subdirectory(dependencies/glfw)
 
-# imgui
 add_library(imgui STATIC
-    dependencies/imgui/imconfig.h
     dependencies/imgui/imgui.cpp
-    dependencies/imgui/imgui.h
     dependencies/imgui/imgui_demo.cpp
     dependencies/imgui/imgui_draw.cpp
     dependencies/imgui/imgui_impl_glfw.cpp
-    dependencies/imgui/imgui_impl_glfw.h
     dependencies/imgui/imgui_impl_opengl3.cpp
-    dependencies/imgui/imgui_impl_opengl3.h
-    dependencies/imgui/imgui_impl_opengl3_loader.h
-    dependencies/imgui/imgui_internal.h
     dependencies/imgui/imgui_tables.cpp
     dependencies/imgui/imgui_widgets.cpp
-    dependencies/imgui/imstb_rectpack.h
-    dependencies/imgui/imstb_textedit.h
-    dependencies/imgui/imstb_truetype.h
 )
 target_link_libraries(imgui PUBLIC glfw)
 
-# imcmake
 add_executable(imcmake main.cpp)
 target_include_directories(imcmake PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/dependencies)
 target_link_libraries(imcmake PRIVATE opengl32 imgui)
